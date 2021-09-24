@@ -125,7 +125,8 @@ class _sign_inState extends State<sign_in> {
                       alignment: Alignment.centerLeft,
                         child: Container(
                             padding: EdgeInsets.only(left: sizee.width/29),
-                            child: Text("Mot de passe oublié ?" , style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold ),))) ,
+                            child: Text("Mot de passe oublié ?" , style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold,    decoration: TextDecoration.underline,
+                            ),))) ,
 
                   ],
 
