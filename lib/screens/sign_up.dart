@@ -41,49 +41,38 @@ class _sign_upState extends State<sign_up> {
                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
                 children: [
-                Container(
-                  child: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                    children: [
-                      Container(
-                        width: sizee.width/2.2,
-                        child: TextFormField(
+            
+             
+                      TextFormField(
                               decoration: InputDecoration(
                                                             fillColor: Colors.white, filled: true,
 
                            contentPadding: EdgeInsets.fromLTRB(10, 8, 10, 8),
                                 labelText: 'Nom',
-                                hintText: 'Nom',
+                                hintText: 'Entrer votre nom',
                                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
                                 icon: Icon(
                                   Icons.person,color: Color(0xfff47834),
                                 ),
                               ),
                             ),
-                      ),
+                     
 
-                          Container(
-                                                  width: sizee.width/2.8,
-
-                            child: TextFormField(
+                       TextFormField(
 
                               decoration: InputDecoration(
                                                             fillColor: Colors.white, filled: true,
 
                             contentPadding: EdgeInsets.fromLTRB(10, 8, 10, 8),
                                 labelText: 'Prénom',
-                                hintText: 'Prénom',
+                                hintText: 'Entrer votre prénom',
                                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-                               
+                                  icon: Icon(
+                                  Icons.person_outline,color: Color(0xfff47834),
+                                ),
                               ),
                             ),
-                          ),
-                    ],
-                  ),
-
-                  
-                ),
+                            
 
 
                 TextFormField(
