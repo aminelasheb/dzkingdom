@@ -135,7 +135,7 @@ class _sign_upState extends State<sign_up> {
 
                         TextFormField(
 
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
                             fillColor: Colors.white, filled: true,
                             contentPadding: EdgeInsets.fromLTRB(10, 8, 10, 8),
