@@ -1,3 +1,4 @@
+import 'package:dzkingdom/screens/sign_up.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -64,13 +65,15 @@ class _sign_inState extends State<sign_in> {
                         child: TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
+                                                        fillColor: Colors.white, filled: true,
+
                             contentPadding: EdgeInsets.fromLTRB(10, 8, 10, 8),
                             labelText: 'Adresse e-mail',
 
                             hintText: 'Entrer votre e-mail',
                             border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
                             icon: Icon(
-                              Icons.email,
+                              Icons.email,color: Color(0xfff47834),
                             ),
                           ),
                         ),
@@ -84,12 +87,14 @@ class _sign_inState extends State<sign_in> {
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: true,
                           decoration: InputDecoration(
+                                                        fillColor: Colors.white, filled: true,
+
                             contentPadding: EdgeInsets.fromLTRB(10, 8, 10, 8),
                             labelText: 'Mot de passe',
                             hintText: 'Entrer votre mot de passe' ,
                             border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
                             icon: Icon(
-                              Icons.password,
+                              Icons.password,color: Color(0xfff47834),
                             ),
                           ),
                         ),
@@ -141,7 +146,10 @@ class _sign_inState extends State<sign_in> {
 
                 ElevatedButton(
                   child: Text("Créer votre compte"),
-                  onPressed: () {},
+                  onPressed: () {
+Navigator.push(context, MaterialPageRoute(builder: (context)=> sign_up()));
+
+                  },
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(sizee.width/2, sizee.height/18),
 
