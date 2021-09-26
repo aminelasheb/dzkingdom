@@ -25,6 +25,10 @@ class _recuperationState extends State<recuperation> {
         appBar: AppBar(
            title: Text("Récuperation du mot de passe" ,style: TextStyle(color: Colors.white),),
             backgroundColor: Color(0xfff47834),
+               automaticallyImplyLeading: true,
+  leading: IconButton(icon:Icon(Icons.arrow_back_ios_new),
+          onPressed: () {  Navigator.pop(context);
+},),
         ),
         body: Center(
         
@@ -43,7 +47,7 @@ class _recuperationState extends State<recuperation> {
                 Container(
                         margin: EdgeInsets.only(bottom:sizee.height/40),
           
-                  child: Text("Récuperer votre mot de passe",style:TextStyle(fontSize: 22,fontWeight: FontWeight.bold))) ,
+                  child: Text("Récuperer votre mot de passe",style:TextStyle(fontSize: 21,fontWeight: FontWeight.bold))) ,
               Container(
                 margin: EdgeInsets.only(bottom:sizee.height/50),
                 child: Image(image: AssetImage('images/ligne2.png'),width: sizee.width*0.85 ,)),

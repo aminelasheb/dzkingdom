@@ -21,6 +21,11 @@ FocusNode myFocusNode = new FocusNode();
       child: Scaffold(
         appBar: AppBar(
            title: Text("Envoyer un commentaire" ,style: TextStyle(color: Colors.white),),
+        automaticallyImplyLeading: true,
+  leading: IconButton(icon:Icon(Icons.arrow_back_ios_new),
+          onPressed: () {  Navigator.pop(context);
+},),
+
             backgroundColor: Color(0xfff47834),
         ),
         body: Center(
@@ -40,7 +45,7 @@ FocusNode myFocusNode = new FocusNode();
                 Container(
                         margin: EdgeInsets.only(bottom:sizee.height/40),
           
-                  child: Text("Envoyer un commentaire",style:TextStyle(fontSize: 22,fontWeight: FontWeight.bold))) ,
+                  child: Text("Envoyer un commentaire",style:TextStyle(fontSize: 21,fontWeight: FontWeight.bold))) ,
               Container(
                 margin: EdgeInsets.only(bottom:sizee.height/50),
                 child: Image(image: AssetImage('images/ligne2.png'),width: sizee.width*0.85 ,)),

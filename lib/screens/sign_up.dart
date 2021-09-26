@@ -21,7 +21,10 @@ class _sign_upState extends State<sign_up> {
         appBar: AppBar(
           title: Text("Créer un compte" ,style: TextStyle(color: Colors.white),),
           backgroundColor: Color(0xfff47834),
-
+       automaticallyImplyLeading: true,
+  leading: IconButton(icon:Icon(Icons.arrow_back_ios_new),
+          onPressed: () {  Navigator.pop(context);
+},),
         ),
         body: 
          SingleChildScrollView(
