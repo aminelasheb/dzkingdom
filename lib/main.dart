@@ -1,4 +1,5 @@
 import 'package:dzkingdom/screens/envoyer_commentaire.dart';
+import 'package:dzkingdom/screens/recuperation.dart';
 import 'package:dzkingdom/screens/sign_in.dart';
 import 'package:dzkingdom/screens/sign_up.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
 

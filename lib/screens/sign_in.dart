@@ -1,3 +1,4 @@
+import 'package:dzkingdom/screens/recuperation.dart';
 import 'package:dzkingdom/screens/sign_up.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -133,8 +134,19 @@ class _sign_inState extends State<sign_in> {
                         alignment: Alignment.centerLeft,
                           child: Container(
                               padding: EdgeInsets.only(left: sizee.width/29),
-                              child: Text("Mot de passe oublié ?" , style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold,    decoration: TextDecoration.underline,
-                              ),))) ,
+                              child:
+
+GestureDetector(
+      onTap: () {
+Navigator.push(context, MaterialPageRoute(builder: (context)=> recuperation()));
+      },
+      child:  Text("Mot de passe oublié ?" , style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold,    decoration: TextDecoration.underline,
+                              ),),
+    )
+
+
+
+                              )) ,
 
                     ],
 

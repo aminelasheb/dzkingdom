@@ -14,6 +14,7 @@ class _envoyer_commentaireState extends State<envoyer_commentaire> {
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
         onTap : () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -72,7 +73,8 @@ class _envoyer_commentaireState extends State<envoyer_commentaire> {
                                 ),
                               ),
                             ),
-                       )         
+                       )  ,
+                
           
           
           
