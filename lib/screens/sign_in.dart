@@ -1,4 +1,3 @@
-import 'package:dzkingdom/screens/envoyer_commentaire.dart';
 import 'package:dzkingdom/screens/recuperation.dart';
 import 'package:dzkingdom/screens/sign_up.dart';
 import 'package:flutter/cupertino.dart';
@@ -160,7 +159,7 @@ Navigator.push(context, MaterialPageRoute(builder: (context)=> recuperation()));
                 ElevatedButton(
                   child: Text("Créer votre compte"),
                   onPressed: () {
-Navigator.push(context, MaterialPageRoute(builder: (context)=> envoyer_commentaire()));
+Navigator.push(context, MaterialPageRoute(builder: (context)=> sign_up()));
 
                   },
                   style: ElevatedButton.styleFrom(
