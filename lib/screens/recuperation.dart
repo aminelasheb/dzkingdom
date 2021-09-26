@@ -19,71 +19,45 @@ class _recuperationState extends State<recuperation> {
     var value;
     return
   
-     GestureDetector(
+    GestureDetector(
         onTap : () => FocusScope.of(context).unfocus(),
-      child: Scaffold(            
- 
-        body: 
-        Column(
-          children: [
-             Container(
-               margin:EdgeInsets.only(top: sizee.height/35  ),
-               alignment: Alignment.topLeft,
-
-
-               child:               
-                 IconButton(    icon: Icon(Icons.arrow_back,),
-                     color: Color(0xfff47834), 
-                     
-                                   iconSize: sizee.height/25,   
-                                    onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context)=> sign_in()));
-    },
-                                      ),
-
-             ),
-            SingleChildScrollView(
-                child: Container(
-                  height: sizee.height/1.2,
-                  width: sizee.width,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
+      child: Scaffold(
+        appBar: AppBar(
+           title: Text("Récuperation du mot de passe" ,style: TextStyle(color: Colors.white),),
+            backgroundColor: Color(0xfff47834),
+        ),
+        body: Center(
+        
+          child: SingleChildScrollView(
+            child: Container(
+          
+              height: sizee.height/1.5,
+              width: sizee.width*0.85,
+              margin:EdgeInsets.only(bottom: sizee.height/12),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+          
+                children: [
+                Image(image: AssetImage('images/recup.png'),width: sizee.width/3.2,height:sizee.width/3.2,),
+                Container(
+                        margin: EdgeInsets.only(bottom:sizee.height/40),
+          
+                  child: Text("Récuperer votre mot de passe",style:TextStyle(fontSize: 22,fontWeight: FontWeight.bold))) ,
+              Container(
+                margin: EdgeInsets.only(bottom:sizee.height/50),
+                child: Image(image: AssetImage('images/ligne2.png'),width: sizee.width*0.85 ,)),
               
-                    children: [
-                    Image(image: AssetImage('images/recup.png'),width: sizee.width/3.2,height:sizee.width/3.2,),
-                    Container(
-
-                       height: sizee.height/2.5,
-                        width: sizee.width,
-                          padding: EdgeInsets.all( sizee.width/20),
-                          decoration: BoxDecoration(
-                            color: Color(0xfff47834),
-
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(50) ,
-                              bottomRight: Radius.circular(50) ,
-
-                            ),
-                          ),
-                      child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-
-children: [
-             Container(
-                            margin: EdgeInsets.only(bottom:sizee.height/40),
-              
-                      child: Text("Récupérez votre mot de passe",style:TextStyle(fontSize: 21,fontWeight: FontWeight.bold,color: Colors.white))) ,
-
-                  
-                            Container(
+            Container(
                               width: sizee.width*0.8,
                               height: sizee.height/16,
-                                        padding: EdgeInsets.symmetric(vertical: sizee.height/1000,horizontal: sizee.width/60),
+       padding: EdgeInsets.only(top: sizee.height/1000,bottom: sizee.height/1000,left: sizee.width/10 ,right:sizee.width/35),
+
                                            decoration: BoxDecoration(
                                              color: Colors.white,
     border: Border.all(color: Colors.grey,width: 1.4,),
 
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(18),
                           ),
 
                               child: DropdownButtonHideUnderline(
@@ -99,41 +73,59 @@ children: [
                                  hint:Text("Méthode de récuperation",style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold),),
                                 onChanged: (_) {},
                               ),
+                              ),),
+          
+                       Container(
+                                       margin: EdgeInsets.only(top:sizee.height/50),
+          
+                         child: ElevatedButton(
+                              child: Text("Envoyer le lien de récupération"),
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                fixedSize: Size(sizee.width/1.2, sizee.height/18),
+          
+                                primary: Color(0xfff47834),
+                                onPrimary: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                ),
                               ),
+                            ),
+                       )  ,
 
-                             
-                            )
-              ,
- ElevatedButton(
-                      child: Text("Se connecter"),
-                      onPressed: () {  },
-                      style: ElevatedButton.styleFrom(
-                        fixedSize: Size(sizee.width/2.5, sizee.height/18),
+    Container(
+                margin: EdgeInsets.only(bottom:sizee.height/50,top:sizee.height/40),
+                child: Image(image: AssetImage('images/ligne2.png'),width: sizee.width*0.85 ,)),
+                
 
-                        side: BorderSide(width: 1.0, color: Colors.grey,),
-                        primary: Colors.white,
-                        onPrimary: Color(0xfff47834),
-                        shape: RoundedRectangleBorder(
-                          
-                          borderRadius: BorderRadius.circular(18.0),
+                 Container(
+                        margin: EdgeInsets.only(top:sizee.height/50),
+          
+                         child: ElevatedButton(
+                              child: Text("Se connecter"),
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                fixedSize: Size(sizee.width/2.5, sizee.height/18),
+                              side: BorderSide(width: 1.0, color: Color(0xfff47834),),
 
-                        ),
-                      ),
-                    ) ,
-],
-                      ),
-                    )
-             
-              
-              
-                    ],
-                  ),
-                ),
+                                primary: Colors.white,
+                                onPrimary:Color(0xfff47834),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                ),
+                              ),
+                            ),
+                       )  ,
+                
+          
+          
+          
+                ],
               ),
-          ],
+            ),
+          ),
         ),
-        ),
-     
+      ),
     );
   }
 }
