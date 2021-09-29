@@ -75,23 +75,25 @@ class SignIn extends StatelessWidget {
                     child:
                         //  SingleChildScrollView(
                         // child:
-                        Column(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                              vertical: deviceSize.height / 80),
-                          child: Container(
-                            margin:
-                                EdgeInsets.only(bottom: deviceSize.height / 80),
-                            child: const Icon(
-                              Icons.account_circle,
-                              color: Colors.black54,
-                              size: 100.0,
+                        SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                                vertical: deviceSize.height / 80),
+                            child: Container(
+                              margin: EdgeInsets.only(
+                                  bottom: deviceSize.height / 80),
+                              child: const Icon(
+                                Icons.account_circle,
+                                color: Colors.black54,
+                                size: 100.0,
+                              ),
                             ),
                           ),
-                        ),
-                        const AuthCard(),
-                      ],
+                          const AuthCard(),
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -116,9 +118,14 @@ class SignIn extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(
-                        left: deviceSize.width / 3.5,
-                        top: deviceSize.height / 80),
+                    // color: Colors.orange,
+                    margin: EdgeInsets.fromLTRB(
+                        deviceSize.width / 3.5,
+                        deviceSize.height / 80,
+                        deviceSize.width / 3.5,
+                        deviceSize.height / 80),
+                    // left: deviceSize.width / 3.5,
+                    // top: deviceSize.height / 80),
                     child: Row(
                       children: [
                         Container(
@@ -147,9 +154,12 @@ class SignIn extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(
-                      left: deviceSize.width / 3.4,
-                    ),
+                    // color: Colors.orange,
+                    margin: EdgeInsets.symmetric(
+                        horizontal: deviceSize.width / 3.4, vertical: 0),
+                    //  (
+                    //   left: deviceSize.width / 3.4,
+                    // ),
                     child: Row(
                       children: [
                         Container(
@@ -169,8 +179,6 @@ class SignIn extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                  // )
                 ],
               ),
             ),
@@ -197,7 +205,12 @@ class _AuthCardState extends State<AuthCard> {
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
 
-  Future<void> submit() async {}
+  Future<void> submit() async {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+  }
+
   _showErrorDialog(String errorMessage) {}
 
   @override
@@ -277,10 +290,11 @@ class _AuthCardState extends State<AuthCard> {
                   child: ElevatedButton(
                     child: const Text("Se connecter"),
                     onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const WelcomePage()));
+                      submit();
+                      // Navigator.pushReplacement(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => const WelcomePage()));
                     },
                     style: ElevatedButton.styleFrom(
                       fixedSize:

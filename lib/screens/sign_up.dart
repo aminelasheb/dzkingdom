@@ -1,190 +1,281 @@
 import 'package:flutter/material.dart';
 
-
 class sign_up extends StatefulWidget {
-  const sign_up({ Key? key }) : super(key: key);
+  const sign_up({Key? key}) : super(key: key);
 
   @override
   _sign_upState createState() => _sign_upState();
 }
 
 class _sign_upState extends State<sign_up> {
-    get sizee => MediaQuery.of(context).size ;
-  bool isCheckH = true ;
-  bool isCheckF = false ;
+  final GlobalKey<FormState> _formKey = GlobalKey();
+  get sizee => MediaQuery.of(context).size;
+  bool isCheckH = true;
+  bool isCheckF = false;
+  final Map<String, String> _authData = {
+    'name': '',
+    'surname': '',
+    'email': '',
+    'password': '',
+    'phone number': '',
+  };
+
+  final TextEditingController _namectrl = TextEditingController();
+  final TextEditingController _surnamectrl = TextEditingController();
+  final TextEditingController _emailctrl = TextEditingController();
+  final TextEditingController _passctrl = TextEditingController();
+  final TextEditingController _cpassctrl = TextEditingController();
+  final TextEditingController _phonectrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-       onTap : () => FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Créer un compte" ,style: TextStyle(color: Colors.white),),
+          title: const Text(
+            "Créer un compte",
+            style: TextStyle(color: Colors.white),
+          ),
           backgroundColor: Color(0xfff47834),
-       automaticallyImplyLeading: true,
-  leading: IconButton(icon:Icon(Icons.arrow_back_ios_new),
-          onPressed: () {  Navigator.pop(context);
-},),
+          automaticallyImplyLeading: true,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-        body: 
-         SingleChildScrollView(
-           child: Center(
-             child: Container(
-               margin: EdgeInsets.only(top: sizee.height/35),
-               alignment: Alignment.center,
+        body: Center(
+          child: SingleChildScrollView(
+            child: Container(
+                margin: EdgeInsets.only(top: sizee.height / 35),
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
-                        color: Colors.grey[200],
-
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-              height: sizee.height/1.2,
-              width: sizee.width/1.12,
-              padding: EdgeInsets.all(sizee.height/80),
-              child: Column(
-                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                children: [
-            
-             
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                height: sizee.height / 1.2,
+                width: sizee.width / 1.12,
+                padding: EdgeInsets.all(sizee.height / 80),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
                       TextFormField(
-                              decoration: InputDecoration(
-                                                            fillColor: Colors.white, filled: true,
-
-                           contentPadding: EdgeInsets.fromLTRB(10, 8, 10, 8),
-                                labelText: 'Nom',
-                                hintText: 'Entrer votre nom',
-                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-                                icon: Icon(
-                                  Icons.person,color: Color(0xfff47834),
-                                ),
-                              ),
-                            ),
-                     
-
-                       TextFormField(
-
-                              decoration: InputDecoration(
-                                                            fillColor: Colors.white, filled: true,
-
-                            contentPadding: EdgeInsets.fromLTRB(10, 8, 10, 8),
-                                labelText: 'Prénom',
-                                hintText: 'Entrer votre prénom',
-                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-                                  icon: Icon(
-                                  Icons.person_outline,color: Color(0xfff47834),
-                                ),
-                              ),
-                            ),
-                            
-
-
-                TextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                                                        fillColor: Colors.white, filled: true,
-
-                            contentPadding: EdgeInsets.fromLTRB(10, 8, 10, 8),
-                            labelText: 'Adresse e-mail',
-
-                            hintText: 'Entrer votre e-mail',
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-                            icon: Icon(
-                              Icons.email,color: Color(0xfff47834),
-                            ),
+                        controller: _namectrl,
+                        validator: (value) {
+                          if (value!.length > 5) {
+                            return '';
+                          } else {
+                            return 'Votre nom doit passer 5 lettres';
+                          }
+                        },
+                        onSaved: (value) {
+                          _authData['name'] = value!;
+                        },
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          contentPadding:
+                              const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                          labelText: 'Nom',
+                          hintText: 'Entrer votre nom',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          prefixIcon: const Icon(
+                            Icons.person,
+                            color: Color(0xfff47834),
                           ),
                         ),
-           TextFormField(
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                                                        fillColor: Colors.white, filled: true,
-
-                            contentPadding: EdgeInsets.fromLTRB(10, 8, 10, 8),
-                            labelText: 'Mot de passe',
-                            hintText: 'Entrer votre mot de passe' ,
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-                            icon: Icon(
-                              Icons.password,color: Color(0xfff47834),
-                            ),
+                      ),
+                      TextFormField(
+                        controller: _surnamectrl,
+                        validator: (value) {
+                          if (value!.length > 5) {
+                            return '';
+                          } else {
+                            return 'Votre prenom doit passer 5 lettres';
+                          }
+                        },
+                        onSaved: (value) {
+                          _authData['surname'] = value!;
+                        },
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          contentPadding:
+                              const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                          labelText: 'Prénom',
+                          hintText: 'Entrer votre prénom',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          prefixIcon: const Icon(
+                            Icons.person_outline,
+                            color: Color(0xfff47834),
                           ),
                         ),
-                        TextFormField(
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                                                        fillColor: Colors.white, filled: true,
-
-                            contentPadding: EdgeInsets.fromLTRB(10, 8, 10, 8),
-                            labelText: 'Confirmation de mot de passe',
-                            hintText: 'Confirmer votre mot de passe' ,
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-                            icon: Icon(
-                              Icons.password,color: Color(0xfff47834),
-                            ),
+                      ),
+                      TextFormField(
+                        controller: _emailctrl,
+                        validator: (value) {
+                          if (value!.contains('@') || (value.length >= 5)) {
+                            return '';
+                          } else {
+                            return 'Votre e-mail est invalide';
+                          }
+                        },
+                        onSaved: (value) {
+                          _authData['email'] = value!;
+                        },
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          contentPadding:
+                              const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                          labelText: 'Adresse e-mail',
+                          hintText: 'Entrer votre e-mail',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          prefixIcon: const Icon(
+                            Icons.email,
+                            color: Color(0xfff47834),
                           ),
                         ),
-
-
-                        TextFormField(
-
-                          keyboardType: TextInputType.phone,
-                          decoration: InputDecoration(
-                            fillColor: Colors.white, filled: true,
-                            contentPadding: EdgeInsets.fromLTRB(10, 8, 10, 8),
-                            labelText: 'Numéro de télephone',
-
-                            hintText: 'Entrer votre numéro de télephone',
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-                            icon: Icon(
-                              Icons.phone,color: Color(0xfff47834),
-                            ),
+                      ),
+                      TextFormField(
+                        controller: _passctrl,
+                        validator: (value) {
+                          if (value!.length > 8) {
+                            return '';
+                          } else {
+                            return 'Votre mot de passe doit passer 8 lettres';
+                          }
+                        },
+                        onSaved: (value) {
+                          _authData['password'] = value!;
+                        },
+                        keyboardType: TextInputType.visiblePassword,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          contentPadding:
+                              const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                          labelText: 'Mot de passe',
+                          hintText: 'Entrer votre mot de passe',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          prefixIcon: const Icon(
+                            Icons.password,
+                            color: Color(0xfff47834),
                           ),
                         ),
-                        Row(
-                                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                          children: [
-                            Row(children: [
-                              Text("Homme") ,
-                                Checkbox(
-      value: isCheckH,
-      onChanged: (bool? value) {
-      setState(() {
-      isCheckH = value!;
-      });}
+                      ),
+                      TextFormField(
+                        controller: _cpassctrl,
+                        validator: (value) {
+                          if (value == _passctrl.text) {
+                            return '';
+                          } else {
+                            return 'Erreur';
+                          }
+                        },
+                        keyboardType: TextInputType.visiblePassword,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          contentPadding:
+                              const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                          labelText: 'Confirmation de mot de passe',
+                          hintText: 'Confirmer votre mot de passe',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          prefixIcon: const Icon(
+                            Icons.password,
+                            color: Color(0xfff47834),
                           ),
-                            ],) ,
-                            Row(children: [
-                              Text("Femme") ,
-                                Checkbox(
-      value: isCheckF,
-      onChanged: (bool? value) {
-      setState(() {
-      isCheckF = value!;
-      });}
+                        ),
+                      ),
+                      TextFormField(
+                        controller: _phonectrl,
+                        validator: (value) {
+                          if (value!.length == 10) {
+                            return '';
+                          } else {
+                            return 'Erreur';
+                          }
+                        },
+                        onSaved: (value) {
+                          _authData['phone number'] = value!;
+                        },
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          contentPadding:
+                              const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                          labelText: 'Numéro de télephone',
+                          hintText: 'Entrer votre numéro de télephone',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          prefixIcon: const Icon(
+                            Icons.phone,
+                            color: Color(0xfff47834),
                           ),
-                            ],)
-                          ],
-                        ) ,
-
-                        ElevatedButton(
-                          child: Text("Créer votre compte"),
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: Size(sizee.width/2, sizee.height/18),
-                            primary: Color(0xfff47834),
-                            onPrimary: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Row(
+                            children: [
+                              const Text("Homme"),
+                              Checkbox(
+                                  value: isCheckH,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isCheckH = value!;
+                                      isCheckF = !isCheckF;
+                                    });
+                                  }),
+                            ],
                           ),
-                        )
-                ],
-              ),
-                 ),
-           ),
-         ),
-        
+                          Row(
+                            children: [
+                              const Text("Femme"),
+                              Checkbox(
+                                  value: isCheckF,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isCheckF = value!;
+                                      isCheckH = !isCheckH;
+                                    });
+                                  }),
+                            ],
+                          )
+                        ],
+                      ),
+                      ElevatedButton(
+                        child: const Text("Créer votre compte"),
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: Size(sizee.width / 2, sizee.height / 18),
+                          primary: const Color(0xfff47834),
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )),
+          ),
+        ),
       ),
     );
   }
