@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   provider: ^6.0.1
+  shared_preferences: ^2.0.8
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -61,14 +62,15 @@ flutter:
   assets:
      - assets/images/logo.png
      - assets/images/logo_horizontal.png
-     - assets/images/ligne.png
      - assets/images/fb.png
      - assets/images/google.png
      - assets/images/envoyer_commentairee.png
-     - assets/images/ligne2.png
      - assets/images/recup.png
-     - assets/images/ligne3.png
      - assets/images/belfort.png
+     - assets/images/ph.png
+     - assets/images/hamiz.jpg
+     - assets/images/kolea.png
+     - assets/images/eulma.png
 
   
 
@@ -77,5 +79,6 @@ flutter:
       fonts:
         - asset: assets/fonts/BalooThambi2-Medium.ttf
         - asset: assets/fonts/BalooThambi2-Regular.ttf
+        - asset: assets/fonts/BalooThambi2-Bold.ttf
           
     

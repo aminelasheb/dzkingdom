@@ -24,7 +24,7 @@ class SignIn extends StatelessWidget {
             color: Colors.white,
           ),
           SingleChildScrollView(
-            child: Container(
+            child: SizedBox(
               // margin: EdgeInsets.symmetric(
               //     vertical: deviceSize.height / 10,
               //     horizontal: deviceSize.width / 20),
@@ -290,11 +290,11 @@ class _AuthCardState extends State<AuthCard> {
                   child: ElevatedButton(
                     child: const Text("Se connecter"),
                     onPressed: () {
-                      submit();
-                      // Navigator.pushReplacement(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => const WelcomePage()));
+                      // submit();
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const WelcomePage()));
                     },
                     style: ElevatedButton.styleFrom(
                       fixedSize:

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class sign_up extends StatefulWidget {
   const sign_up({Key? key}) : super(key: key);
@@ -26,6 +28,15 @@ class _sign_upState extends State<sign_up> {
   final TextEditingController _passctrl = TextEditingController();
   final TextEditingController _cpassctrl = TextEditingController();
   final TextEditingController _phonectrl = TextEditingController();
+  
+  Future<void> signUp()async {
+    if(!_formKey.currentState!.validate()){
+      return;
+
+
+  }
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -261,7 +272,10 @@ class _sign_upState extends State<sign_up> {
                       ),
                       ElevatedButton(
                         child: const Text("Créer votre compte"),
-                        onPressed: () {},
+                        onPressed: () async{
+                           // getData();
+                          signUp().then((value) => getData());
+                        },
                         style: ElevatedButton.styleFrom(
                           fixedSize: Size(sizee.width / 2, sizee.height / 18),
                           primary: const Color(0xfff47834),
@@ -278,5 +292,13 @@ class _sign_upState extends State<sign_up> {
         ),
       ),
     );
+  }
+  void getData()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setString('name', _namectrl.text);
+    prefs.setString('email', _emailctrl.text);
+    prefs.setString('surname', _surnamectrl.text);
+
   }
 }
