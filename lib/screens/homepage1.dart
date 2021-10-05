@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:dzkingdom/Providers/User.dart';
-import 'package:dzkingdom/Screens/sign_in.dart';
+import 'package:dzkingdom/Providers/homeprov.dart';
 import 'package:dzkingdom/Providers/zones.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,6 +22,7 @@ class _WelcomePageState extends State<WelcomePage>
 
   late Animation<double> _animation;
 
+
   static bool isClicked = false;
 
   static String name = '';
@@ -37,6 +38,9 @@ class _WelcomePageState extends State<WelcomePage>
 
     _animation = Tween<double>(begin: 0.0, end: 1.0)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
+
+
+
   }
 
   @override
@@ -106,6 +110,8 @@ class _WelcomePageState extends State<WelcomePage>
               animation: _animation,
               controller: _controller,
             ),
+            ZoneInfos(
+            )
           ],
         ));
   }
@@ -127,7 +133,7 @@ class Profile extends StatefulWidget {
   State<Profile> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
+class _ProfileState extends State<Profile>  {
   @override
   Widget build(BuildContext context) {
     var deviceSize = MediaQuery.of(context).size;
@@ -238,28 +244,47 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                         height: 15.0,
                       ),
                       Column(
-                        children: const [
-                          Categ(
-                              icon: Icon(
-                                Icons.comment,
-                                color: Colors.orange,
-                                size: 30,
-                              ),
-                              desc: 'Envoyer un commentaire'),
+                        children:  [
+
+
+                             Categ(
+                              id: 'sc',
+                                widget: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.grey,
+
+                                  ),
+                                  child: Icon(
+                                    Icons.message_rounded,
+                                    color: Colors.orange,
+                                    size: 30,
+                                  ),
+                                ),
+                                desc:'Envoyer un commentaire'),
+
                           SizedBox(height: 10),
                           Categ(
-                              icon: Icon(
-                                Icons.settings,
-                                color: Colors.grey,
-                                size: 30,
+                            id: 'settings',
+                              widget: Container(
+                                color: Colors.orange,
+                                child: Icon(
+                                  Icons.settings,
+                                  color: Colors.grey,
+                                  size: 30,
+                                ),
                               ),
                               desc: 'Paramètres'),
                           SizedBox(height: 10),
                           Categ(
-                              icon: Icon(
-                                Icons.logout,
-                                color: Colors.orange,
-                                size: 30,
+                            id: 'logout',
+                              widget: Container(
+                                color: Colors.grey,
+                                child: Icon(
+                                  Icons.logout,
+                                  color: Colors.orange,
+                                  size: 30,
+                                ),
                               ),
                               desc: 'Se déconnecter ')
                         ],
@@ -275,28 +300,48 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
 }
 
 class Categ extends StatelessWidget {
-  final Icon icon;
+  final String id;
+  final Widget widget;
   final String desc;
 
-  const Categ({Key? key, required this.icon, required this.desc})
+  const Categ({Key? key, required this.widget, required this.desc, required this.id})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        if(id == 'logout'){
+
+        }
+        else if(id == 'sc'){
+
+        }
+        else{
+
+        }
+
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          icon,
+          Container(
+            decoration:BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+              // color: Colors.orange
+            ),
+              child: widget),
           SizedBox(width: 15),
-          Text(
-            desc,
-            style: TextStyle(
-                fontFamily: 'Baloo Thambi 2',
-                fontSize: 22,
-                color: Colors.black,
-                overflow: TextOverflow.fade),
+          Expanded(
+            child: Text(
+              desc,
+              maxLines: 1,
+              style: TextStyle(
+                  fontFamily: 'Baloo Thambi 2',
+                  fontSize: 22,
+                  color: Colors.black,
+                  overflow: TextOverflow.fade),
+            ),
           )
         ],
       ),
@@ -312,11 +357,13 @@ class ZoneList extends StatelessWidget {
     return ListView.builder(
         itemCount: Zones.list.length,
         itemBuilder: (context, i) {
-          return ZoneUi(
-            name: Zones.list[i].name,
-            imgUrl: Zones.list[i].imgUrl,
-            description: Zones.list[i].description,
-          );
+          return
+             ZoneUi(
+              name: Zones.list[i].name,
+              imgUrl: Zones.list[i].imgUrl,
+              description: Zones.list[i].description,
+            );
+
         });
   }
 }
@@ -331,7 +378,9 @@ class ZoneUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Card(
+    return Consumer<HomeProv>(
+        builder: (context,val,child)=>
+      Card(
       elevation: 1.0,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -361,9 +410,37 @@ class ZoneUi extends StatelessWidget {
             ),
           ),
           Spacer(),
-          IconButton(onPressed: () {}, icon: Icon(Icons.info_outline)),
+          IconButton(onPressed: () {
+            val.switcher();
+
+          }, icon: Icon(Icons.info_outline)),
         ],
       ),
-    );
+    ));
   }
 }
+
+//TODO
+class ZoneInfos extends StatelessWidget{
+  const ZoneInfos({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<HomeProv>(
+        builder: (context,val,child)=>
+        Center(
+      child: Container(
+        width: val.isClicked ? 300:0,
+        height: val.isClicked ? 300:0,
+        color: Colors.black,
+        child: Text("data",
+      )
+
+      ),
+    ));
+
+  }
+
+
+}
+
