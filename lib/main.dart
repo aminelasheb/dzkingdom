@@ -2,6 +2,7 @@
 
 
 
+import 'package:dzkingdom/screens/userUI/boutiques.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ void main() {
         theme: ThemeData(),
         debugShowCheckedModeBanner: false,
         routes: {},
-        home: SignIn(),
+        home: boutiques(),
       ),
     ),
   ));
