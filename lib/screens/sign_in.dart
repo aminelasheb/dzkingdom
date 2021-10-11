@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_final_fields
 
 import 'package:dzkingdom/Providers/homeprov.dart';
+import 'package:dzkingdom/Providers/user.dart';
 import 'package:dzkingdom/Screens/homepage1.dart';
 import 'package:dzkingdom/Screens/recuperation.dart';
 import 'package:dzkingdom/Screens/sign_up.dart';
@@ -103,7 +104,8 @@ class SignIn extends StatelessWidget {
                     child: const Text("Créer votre compte"),
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => sign_up()));
+                          MaterialPageRoute(
+                              builder:(_)=> const sign_up()));
                     },
                     style: ElevatedButton.styleFrom(
                       fixedSize:
@@ -292,13 +294,16 @@ class _AuthCardState extends State<AuthCard> {
                   child: ElevatedButton(
                     child: const Text("Se connecter"),
                     onPressed: () {
+                      // Provider.of<User>(context, listen:false).getUserData();
                       // submit();
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ChangeNotifierProvider(
-                                  create:(_)=>HomeProv()
-                                  ,child: const WelcomePage())));
+
+                              builder: (context) =>
+                                 const WelcomePage(),
+
+                              ));
                     },
                     style: ElevatedButton.styleFrom(
                       fixedSize:
