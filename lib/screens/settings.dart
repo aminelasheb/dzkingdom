@@ -41,7 +41,7 @@ class _settingsState extends State<settings> {
         onTap : () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-            title: Text("Settings" ,style: TextStyle(color: Colors.white),),
+            title: Text("Parametres" ,style: TextStyle(color: Colors.white),),
             backgroundColor: Color(0xfff47834),
          automaticallyImplyLeading: true,
       leading: IconButton(icon:Icon(Icons.arrow_back_ios_new),

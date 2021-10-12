@@ -22,7 +22,7 @@ class boutiquess extends ChangeNotifier {
   }
   List<boutique> list = [
 
-    boutique(id: 'id1', name: 'Elmigneuww', imgUrl: '',followers: 124,follow: true ,tendance: true),
+    boutique(id: 'id1', name: 'Elmigneuw_', imgUrl: '',followers: 124,follow: true ,tendance: true),
     boutique(id: 'id2', name: 'ScareX', imgUrl: '',followers: 67,follow: true,tendance: true),
     boutique(id: 'id3', name: 'yaekoub16', imgUrl: '',followers: 928,follow: false,tendance: true),
     boutique(id: 'id4', name: 'calyy29', imgUrl: '',followers: 29,follow: true,tendance: false),

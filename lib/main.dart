@@ -2,11 +2,12 @@
 
 
 
+import 'package:dzkingdom/Providers/boutique.dart';
 import 'package:dzkingdom/Providers/homeprov.dart';
 import 'package:dzkingdom/screens/userUI/boutiques.dart';
+import 'package:dzkingdom/screens/userUI/notif.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'Providers/auth.dart';
 import 'Providers/user.dart';
 import 'Screens/sign_in.dart';
@@ -17,6 +18,7 @@ void main() {
       ChangeNotifierProvider.value(value: Auth()),
       ChangeNotifierProvider.value(value: User()),
       ChangeNotifierProvider.value(value: HomeProv()),
+      ChangeNotifierProvider.value(value: boutiquess()),
 
       // ChangeNotifierProvider.value(value: User())
     ],
@@ -25,7 +27,7 @@ void main() {
         theme: ThemeData(),
         debugShowCheckedModeBanner: false,
         routes: {},
-        home: SignIn(),
+        home: notifications() ,
       ),
     ),
   ));
