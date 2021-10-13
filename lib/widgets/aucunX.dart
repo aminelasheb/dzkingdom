@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class aucunX extends StatelessWidget {
   final String xx ;
+  
   const aucunX({
     Key? key,
     required this.sizee,

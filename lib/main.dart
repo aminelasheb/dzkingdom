@@ -5,6 +5,7 @@
 import 'package:dzkingdom/Providers/boutique.dart';
 import 'package:dzkingdom/Providers/homeprov.dart';
 import 'package:dzkingdom/screens/userUI/boutiques.dart';
+import 'package:dzkingdom/screens/userUI/historique.dart';
 import 'package:dzkingdom/screens/userUI/notif.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +28,7 @@ void main() {
         theme: ThemeData(),
         debugShowCheckedModeBanner: false,
         routes: {},
-        home: notifications() ,
+        home: historique() ,
       ),
     ),
   ));
