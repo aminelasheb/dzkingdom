@@ -13,7 +13,7 @@ class storee extends StatelessWidget {
     required this.obj ,
     required this.Liste,
     required this.sizee ,
-    required this.x,
+    required this.x, // 1 :hist
      Key? key }) : super(key: key);
 
   @override
@@ -22,8 +22,6 @@ class storee extends StatelessWidget {
                               title: 
                               Row(children: [
                                Text(Liste[index].name+" "),
-                               
-  
                                Liste[index].tendance?Icon(
     Icons.verified_outlined,color: Colors.brown ,
   ):Container() ,
@@ -48,7 +46,6 @@ class storee extends StatelessWidget {
                               child: Text(Liste[index].follow?"Désabonner":"S'abonner" ,style: TextStyle(fontSize:Liste[index].follow?12:13, color: !Liste[index].follow?Colors.white:Color(0xfff47834),),),
                               onPressed: () {
                                    obj.switcher(index,x,Liste[index].id);
-                            
                               },
                               style: ElevatedButton.styleFrom(
                                 fixedSize: Size(Liste[index].follow?sizee.width / 3.7:sizee.width / 4

@@ -30,6 +30,7 @@ class _boutiquesState extends State<boutiques> {
 
 
     return GestureDetector(
+      
               onTap : () => FocusScope.of(context).unfocus(),
 
       child: Scaffold(

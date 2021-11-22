@@ -9,34 +9,36 @@ class boutique extends ChangeNotifier {
    int followers ;
    bool follow ;
    bool tendance ;
-
-  boutique({required this.id, required this.name, required this.imgUrl, required this.followers,required this.follow,required this.tendance});
+final int rating ;
+  boutique({required this.id, required this.name, required this.imgUrl, required this.followers,required this.follow,required this.tendance,required this.rating});
 }
 
 class boutiquess extends ChangeNotifier {
 
   bool search = false ;
+
   void searchup() {
     search=!search;
     notifyListeners();
   }
+
   List<boutique> list = [
 
-    boutique(id: 'id1', name: 'Elmigneuw_', imgUrl: '',followers: 124,follow: true ,tendance: true),
-    boutique(id: 'id2', name: 'ScareX', imgUrl: '',followers: 67,follow: true,tendance: true),
-    boutique(id: 'id3', name: 'yaekoub16', imgUrl: '',followers: 928,follow: false,tendance: true),
-    boutique(id: 'id4', name: 'calyy29', imgUrl: '',followers: 29,follow: true,tendance: false),
-    boutique(id: 'id5', name: 'billie', imgUrl: '',followers: 29,follow: false,tendance: false),
-    boutique(id: 'id6', name: 'yasmyyn', imgUrl: '',followers: 29,follow: true,tendance: true),
-    boutique(id: 'id7', name: 'hmiidaZ', imgUrl: '',followers: 29,follow: false,tendance: false),
+    boutique(id: 'id1', name: 'Elmigneuw_', imgUrl: '',followers: 124,follow: true ,tendance: true,rating:1),
+    boutique(id: 'id2', name: 'ScareX', imgUrl: '',followers: 67,follow: true,tendance: true,rating:2),
+    boutique(id: 'id3', name: 'yaekoub16', imgUrl: '',followers: 928,follow: false,tendance: true,rating:3),
+    boutique(id: 'id4', name: 'calyy29', imgUrl: '',followers: 29,follow: true,tendance: false,rating:3),
+    boutique(id: 'id5', name: 'billie', imgUrl: '',followers: 29,follow: false,tendance: false,rating:3),
+    boutique(id: 'id7', name: 'hmiidaZ', imgUrl: '',followers: 29,follow: false,tendance: false,rating:3),
 
   ];
-
-   List<boutique> get list_abn {return list.where((element) => element.follow).toList();} 
-
+ 
+   List<boutique> get list_abn {
+     return list.where((element) => element.follow).toList();
+     } 
+  
    List<boutique> get list_ten {return list.where((element) => element.tendance).toList();} 
-
-
+ 
 
 /*  void filterSearchResults(String query,int x,List<boutique> a) {
   List<boutique> Liste = [] ;

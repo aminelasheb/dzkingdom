@@ -54,7 +54,7 @@ class SignIn extends StatelessWidget {
                         SizedBox(width: deviceSize.width * 0.05),
                         Image(
                           image: const AssetImage(
-                              'assets/images/logo_horizontal.png'),
+                              'assets/images/avatar.png'),
                           height: deviceSize.height / 20,
                           width: deviceSize.width / 3,
                         )
@@ -72,8 +72,8 @@ class SignIn extends StatelessWidget {
                         EdgeInsets.symmetric(horizontal: deviceSize.width / 75),
                     // margin: EdgeInsets.only(bottom: deviceSize.height / 50),
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(20),
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(20),
                     ),
                     child:
                         //  SingleChildScrollView(

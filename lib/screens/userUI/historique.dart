@@ -1,3 +1,6 @@
+import 'package:dzkingdom/screens/userUI/boutiques.dart';
+import 'package:dzkingdom/screens/userUI/historiqueUI.dart';
+import 'package:dzkingdom/screens/userUI/historique_ui_boutique.dart';
 import 'package:flutter/material.dart';
 
 class historique extends StatefulWidget {
@@ -35,8 +38,8 @@ class _historiqueState extends State<historique> {
           ),
           body: TabBarView(
             children: [
-             Container(),
-             Container(),
+             historiqueUi(),
+             hisUiBout(),
             ],
           ),
         ),

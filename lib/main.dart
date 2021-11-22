@@ -4,6 +4,9 @@
 
 import 'package:dzkingdom/Providers/boutique.dart';
 import 'package:dzkingdom/Providers/homeprov.dart';
+import 'package:dzkingdom/screens/client/followedUi.dart';
+import 'package:dzkingdom/screens/client/propos.dart';
+import 'package:dzkingdom/screens/homepage1.dart';
 import 'package:dzkingdom/screens/userUI/boutiques.dart';
 import 'package:dzkingdom/screens/userUI/historique.dart';
 import 'package:dzkingdom/screens/userUI/notif.dart';
@@ -28,7 +31,7 @@ void main() {
         theme: ThemeData(),
         debugShowCheckedModeBanner: false,
         routes: {},
-        home: historique() ,
+        home: followed()
       ),
     ),
   ));
