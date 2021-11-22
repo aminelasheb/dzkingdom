@@ -1,3 +1,4 @@
+import 'package:dzkingdom/widgets/storee.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dzkingdom/Providers/boutique.dart';
@@ -13,7 +14,7 @@ class boutiques extends StatefulWidget {
 }
 
 class _boutiquesState extends State<boutiques> {
-  int x=2 ; // 1 et 3 pour interface Boutique (1:tous ,3:tendaces) et 2 pour interface boutiques abonnées
+  int x=1 ; // 1 et 3 pour interface Boutique (1:tous ,3:tendaces) et 2 pour interface boutiques abonnées
     List<boutique> Liste=[] ;
       get sizee => MediaQuery.of(context).size ;
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class _boutiquesState extends State<boutiques> {
 
 
     return GestureDetector(
+      
               onTap : () => FocusScope.of(context).unfocus(),
 
       child: Scaffold(
@@ -147,49 +149,8 @@ class _boutiquesState extends State<boutiques> {
                         shrinkWrap: true,
                         itemBuilder: (context, index ) {
                         return Card(
-                            child: ListTile(
-                                title: 
-                                Row(children: [
-                                 Text(Liste[index].name+" "),
-                                 
-    
-                                 x==3?Icon(
-      Icons.verified_outlined,color: Colors.brown ,
-    ):Container() ,
-    
-    Container(
-      margin:EdgeInsets.only(left:sizee.width/100),
-      child:   Icon(
-      
-      Icons.circle,color: Colors.green ,size:11
-      
-      ),
-    )
-                                ],),
-                                //Row(
-                                
-                                subtitle: Text(Liste[index].followers.toString()+" Abonnées"),
-                                leading: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                "https://images.unsplash.com/photo-1547721064-da6cfb341d50")),
-                                trailing:
-                      ElevatedButton(
-                                child: Text(Liste[index].follow?"Désabonner":"S'abonner" ,style: TextStyle(fontSize:Liste[index].follow?12:13, color: !Liste[index].follow?Colors.white:Color(0xfff47834),),),
-                                onPressed: () {
-                                     obj.switcher(index,x,Liste[index].id);
-                              
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  fixedSize: Size(Liste[index].follow?sizee.width / 3.7:sizee.width / 4
-                                    , sizee.height / 100),
-                                  primary: Liste[index].follow?Colors.white:Color(0xfff47834),
-                                  onPrimary: !Liste[index].follow?Colors.white:Color(0xfff47834),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                  ),
-                                ),
-                              ),
-                        ));}),
+                            child: storee(index: index, obj: obj, Liste: Liste, sizee: sizee, x: x));}),
+                            // store_widg(index, obj));}),
                    
                   ],
                 )
@@ -210,5 +171,7 @@ class _boutiquesState extends State<boutiques> {
       
   
   
-} }
+}
+
+ }
 
